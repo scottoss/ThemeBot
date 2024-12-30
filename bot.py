@@ -61,9 +61,9 @@ async def sync(ctx):
         await ctx.send('You must be the owner to use this command!')
 
 
-@bot.tree.command(description="Sync application commands.")
-async def sync_commands(interaction):
-    await sync.sync_commands(interaction, tree)
+#@bot.tree.command(description="Sync application commands.")
+#async def sync_commands(interaction):
+#    await sync.sync_commands(interaction, tree)
 
 
 class Attraction(app_commands.Group):
