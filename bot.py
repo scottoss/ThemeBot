@@ -33,9 +33,9 @@ bot = commands.Bot(command_prefix="!", intents=intents,
 
 
 def main():
-    tree.add_command(Attraction())
-    tree.add_command(Destination())
-    tree.add_command(Weather())
+    bot.tree.add_command(Attraction())
+    bot.tree.add_command(Destination())
+    bot.tree.add_command(Weather())
 
     client.run(DISCORD_TOKEN)
 
