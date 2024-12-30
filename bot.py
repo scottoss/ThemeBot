@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 from discord.ext import commands
 import commands.attraction as attraction
 import commands.destination as destination
-import commands.sync as sync
+import commands.List as List
 import commands.weather as weather
 import helpers.track_attractions as track_attractions
 
@@ -20,17 +20,10 @@ GUILD = discord.Object(int(os.getenv("GUILD_ID")))
 
 intents = discord.Intents.all()
 
-#client = discord.Client(intents=intents)
-
-#tree = app_commands.CommandTree(bot)
-
-
 bot = commands.Bot(command_prefix="!", intents=intents,
                    case_insensitive=False,)
                    
                    
-#tree = app_commands.CommandTree(bot)
-
 
 def main():
     bot.tree.add_command(Attraction())
@@ -62,8 +55,8 @@ async def sync(ctx):
 
 
 #@bot.tree.command(description="Sync application commands.")
-#async def sync_commands(interaction):
-#    await sync.sync_commands(interaction, tree)
+#async def List_Parks(interaction):
+#    await List.List_Parks(interaction, tree)
 
 
 class Attraction(app_commands.Group):
@@ -155,6 +148,10 @@ class Destination(app_commands.Group):
     @app_commands.command(description="View added destinations.")
     async def view_added(self, interaction):
         await destination.view_added(interaction)
+        
+    @app_commands.command(description="List all available parks.")
+    async def List_Parks(interaction):
+        await List.List_Parks(interaction, tree)
 
 
 class Weather(app_commands.Group):
