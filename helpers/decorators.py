@@ -4,6 +4,7 @@ import helpers.embed as embed
 
 def require_destinations(func):
     async def inner(interaction, *args, **kwargs):
+        await interaction.response.defer()
         rows = db.execute(
             "SELECT * FROM destinations WHERE user_id = ?", interaction.user.id
         )
