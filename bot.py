@@ -54,7 +54,7 @@ async def on_ready():
 @bot.command()
 async def sync(ctx):
     print("sync command")
-    if ctx.author.id == "613030812501278740":
+    if ctx.author.id == 613030812501278740:
         await bot.tree.sync()
         await ctx.send('Command tree synced.')
     else:
