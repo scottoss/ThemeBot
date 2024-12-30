@@ -150,7 +150,7 @@ class Destination(app_commands.Group):
         await destination.view_added(interaction)
         
     @app_commands.command(description="List all available parks.")
-    async def List_Parks(interaction):
+    async def show_Parks(interaction):
         await List.list_parks(interaction, tree)
 
 
