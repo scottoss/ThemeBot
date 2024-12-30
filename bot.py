@@ -22,12 +22,16 @@ intents = discord.Intents.default()
 
 #client = discord.Client(intents=intents)
 
-tree = app_commands.CommandTree(bot)
+#tree = app_commands.CommandTree(bot)
 
 
 bot = commands.Bot(command_prefix="!", intents=intents,
                    case_insensitive=False,)
+                   
+                   
 tree = app_commands.CommandTree(bot)
+
+
 def main():
     tree.add_command(Attraction())
     tree.add_command(Destination())
