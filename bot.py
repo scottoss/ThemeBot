@@ -20,14 +20,14 @@ GUILD = discord.Object(int(os.getenv("GUILD_ID")))
 
 intents = discord.Intents.default()
 
-client = discord.Client(intents=intents)
+#client = discord.Client(intents=intents)
 
-tree = app_commands.CommandTree(client)
+tree = app_commands.CommandTree(bot)
 
 
 bot = commands.Bot(command_prefix="!", intents=intents,
                    case_insensitive=False,)
-
+tree = app_commands.CommandTree(bot)
 def main():
     tree.add_command(Attraction())
     tree.add_command(Destination())
@@ -36,13 +36,13 @@ def main():
     client.run(DISCORD_TOKEN)
 
 
-@client.event
+@bot.event
 async def on_ready():
     await bot.tree.sync()
-    print(f"Logged in as {client.user}!")
+    print(f"Logged in as {bot.user}!")
 
     while True:
-        await track_attractions.track(client)
+        await track_attractions.track(bot)
         await asyncio.sleep(5)
 
 
