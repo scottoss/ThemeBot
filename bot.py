@@ -38,6 +38,7 @@ def main():
 
 @client.event
 async def on_ready():
+    await bot.tree.sync()
     print(f"Logged in as {client.user}!")
 
     while True:
