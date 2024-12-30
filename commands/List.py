@@ -1,4 +1,4 @@
-async def List_Parks(interaction, tree, guild=None):
+async def list_parks(interaction, tree, guild=None):
  await interaction.response.defer()
  embed=discord.Embed(title="All parks available", url="https://themeparks.wiki", description="These are all parks currently registered", color=0x00ff88)
  embed.add_field(name="Guangzhou Chimelong Tourist Resort", value="Chimelong Paradise Chimelong Water Park Chimelong Safari Park Chimelong Birds Park", inline=True)

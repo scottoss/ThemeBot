@@ -151,7 +151,7 @@ class Destination(app_commands.Group):
         
     @app_commands.command(description="List all available parks.")
     async def List_Parks(interaction):
-        await List.List_Parks(interaction, tree)
+        await List.list_parks(interaction, tree)
 
 
 class Weather(app_commands.Group):
