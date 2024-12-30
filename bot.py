@@ -5,7 +5,7 @@ import os
 import discord
 from discord import app_commands
 from dotenv import load_dotenv
-
+from discord.ext import commands
 import commands.attraction as attraction
 import commands.destination as destination
 import commands.sync as sync
