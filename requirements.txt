@@ -1,0 +1,6 @@
+aiodns
+cs50
+discord.py
+matplotlib
+python-dotenv
+audioop-lts
