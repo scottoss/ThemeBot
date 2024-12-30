@@ -25,10 +25,13 @@ client = discord.Client(intents=intents)
 tree = app_commands.CommandTree(client)
 
 
+bot = commands.Bot(command_prefix="!", intents=intents,
+                   case_insensitive=False,)
+
 def main():
-    tree.add_command(Attraction(), guild=GUILD)
-    tree.add_command(Destination(), guild=GUILD)
-    tree.add_command(Weather(), guild=GUILD)
+    tree.add_command(Attraction())
+    tree.add_command(Destination())
+    tree.add_command(Weather())
 
     client.run(DISCORD_TOKEN)
 
@@ -42,9 +45,20 @@ async def on_ready():
         await asyncio.sleep(5)
 
 
-@tree.command(description="Sync application commands.", guild=GUILD)
+
+@bot.command()
+async def sync(ctx):
+    print("sync command")
+    if ctx.author.id == "613030812501278740":
+        await bot.tree.sync()
+        await ctx.send('Command tree synced.')
+    else:
+        await ctx.send('You must be the owner to use this command!')
+
+
+@bot.tree.command(description="Sync application commands.")
 async def sync_commands(interaction):
-    await sync.sync_commands(interaction, tree, GUILD)
+    await sync.sync_commands(interaction, tree)
 
 
 class Attraction(app_commands.Group):
