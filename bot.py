@@ -150,7 +150,7 @@ class Destination(app_commands.Group):
         await destination.view_added(interaction)
         
     @app_commands.command(description="List all available parks.")
-    async def list_Parks(interaction):
+    async def list_parks(interaction):
         await interaction.followup.send("All parks listed here: https://themeparks.wiki/browse")
 
 
