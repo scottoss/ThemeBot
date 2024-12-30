@@ -18,7 +18,7 @@ load_dotenv()
 DISCORD_TOKEN = os.getenv("DISCORD_TOKEN")
 GUILD = discord.Object(int(os.getenv("GUILD_ID")))
 
-intents = discord.Intents.default()
+intents = discord.Intents.all()
 
 #client = discord.Client(intents=intents)
 
