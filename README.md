@@ -1,28 +1,27 @@
-# Themeparkify
+# ThemeBot
 A Discord bot to assist with all things theme parks.
-#### Video Demo: https://youtu.be/ggNd7Tbj9O8
 
-<img width="853" alt="image" src="https://github.com/eric-vo/themeparkify/assets/99783770/dc0c4fb3-3a58-4300-9605-ad98d7ab9dcb">
+
+
 
 #### How to Run:
 1. Create a new [Discord application](https://discord.com/developers/applications), or use an existing one. Invite the application's bot to your desired Discord server with `bot` and `application.commands` scopes.
 2. Ensure you have [Python installed.](https://www.python.org/downloads/), and make sure it is added to PATH.
 3. Clone this repository.
 4. Open your terminal and navigate to the newly cloned repository.
-4. Create a file in the root directory of the cloned repository named `.venv` with the following:
+4. Create a file in the root directory of the cloned repository named `.env` with the following:
     ```
     DISCORD_TOKEN=<YOUR_TOKEN>
-    GUILD_ID=<YOUR_SERVER_ID>
     STATUS_CHANNEL_ID=<YOUR_CHANNEL_ID>
-    WEATHER_API_KEY=<YOUR_API_KEY>
+    
     ```
-    where `<YOUR_TOKEN>` is your bot's token, `<YOUR_SERVER_ID>` is your desired Discord server's ID, `<YOUR_CHANNEL_ID>` is the ID of the channel you want status updates in, and `<YOUR_API_KEY>` is your [OpenWeatherMap](https://openweathermap.org/api) API key.
+    where `<YOUR_TOKEN>` is your bot's token, `<YOUR_CHANNEL_ID>` is the ID of the channel you want status updates in.
 5. Execute `pip install -r requirements.txt` in your terminal.
 6. Open your terminal and navigate to the newly cloned repository.
 7. Execute `python bot.py` in your terminal.
 
 #### Description:
-Themeparkify is a Discord bot that assists users with everything they need to plan their next trip to a theme park.
+ThemepBot is a Discord bot that assists users with everything they need to plan their next trip to a theme park.
 
 The bot includes features such as viewing the wait times, return times, operating hours, and wait forecasts for attractions. Users can also track when the wait time for a certain attraction reaches a certain threshold as well as get the weather forecast for a certain destination to get a sense of how hot/cold it may be.
 
@@ -39,10 +38,6 @@ The bot's primary source for attraction data is the [ThemeParks API](https://the
 An interesting feature in attraction data for Disney theme parks is the wait forecast, which provides predicted wait times by hour. When getting attraction information, a graph of this forecast will also be provided if it is available, using Matplotlib to easily generate a graph through Python.
 
 `commands/destination.py` works similarly to `commands/attraction.py` in where there is the ability to add and remove a destination, view added destinations, and clear all added destinations.
-
-`commands/sync.py` allows the bot to sync its commands with the guild, as this must be manually done. It cannot be done on bot startup due to rate limits that may affect its ability to do so.
-
-`commands/weather.py` includes the code for performing weather forecasts. This file uses the [OpenWeatherMap API](https://openweathermap.org/api) to retrieve future weather data based on a provided latitude and longitude, which is provided from destinations by the ThemeParks API. Based on the provided destination name, the code searches through a user's list of destinations for the destination, gets the latitude and logitude, makes an API request for the weather, then generates a graph of the weather for the next five days at that location using Matplotlib.
 
 `helpers/database.py` offers helper methods for interacting with the `themeparkify.db` database using CS50's SQL module. Adding on to the original ability to execute SQL code, commonly repeated code such as getting the user's destination IDs and tracked attractions is also bundled into helper methods in this file.
 
