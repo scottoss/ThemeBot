@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 from discord.ext import commands
 import commands.attraction as attraction
 import commands.destination as destination
-import commands.List as List
+#import commands.List as List
 import commands.weather as weather
 import helpers.track_attractions as track_attractions
 
@@ -150,21 +150,21 @@ class Destination(app_commands.Group):
         await destination.view_added(interaction)
         
     @app_commands.command(description="List all available parks.")
-    async def show_Parks(interaction):
-        await List.list_parks(interaction, tree)
+    async def list_Parks(interaction):
+        await interaction.followup.send("All parks listed here: https://themeparks.wiki/browse")
 
 
-class Weather(app_commands.Group):
-    # Weather related commands
-
-    @app_commands.command(
-        description="Get the weather forecast for a destination."
-    )
-    @app_commands.describe(
-        destination_name=("The destination to get the weather forcast of.")
-    )
-    async def forecast(self, interaction, destination_name: str):
-        await weather.forecast(interaction, destination_name)
+#class Weather(app_commands.Group):
+#    # Weather related commands
+#
+#    @app_commands.command(
+#        description="Get the weather forecast for a destination."
+#    )
+#    @app_commands.describe(
+#        destination_name=("The destination to get the weather forcast of.")
+#    )
+#    async def forecast(self, interaction, destination_name: str):
+#        await weather.forecast(interaction, destination_name)
 
 
 if __name__ == "__main__":
