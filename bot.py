@@ -29,7 +29,7 @@ bot = commands.Bot(command_prefix="!", intents=intents,
                    case_insensitive=False,)
                    
                    
-tree = app_commands.CommandTree(bot)
+#tree = app_commands.CommandTree(bot)
 
 
 def main():
