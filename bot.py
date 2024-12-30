@@ -37,7 +37,7 @@ def main():
     bot.tree.add_command(Destination())
     bot.tree.add_command(Weather())
 
-    client.run(DISCORD_TOKEN)
+    bot.run(DISCORD_TOKEN)
 
 
 @bot.event
