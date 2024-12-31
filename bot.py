@@ -153,11 +153,19 @@ class Destination(app_commands.Group):
     #sync def list_parks(interaction):
     #    await interaction.followup.send("All parks listed here: https://themeparks.wiki/browse")
 
-@app_commands.command(description="test")
+@app_commands.command(description="Get information for an attraction.")
+@app_commands.describe(
+    attraction_name=(
+        "The attraction to search for. Type all of part of the name."
+    ),
+    park_name=("The theme park to search. Type all or part of the name."),
+)
 @app_commands.allowed_installs(guilds=True, users=True) # users only, no guilds for install
 @app_commands.allowed_contexts(guilds=True, dms=True, private_channels=True) # all allowed
-async def hello(interaction: discord.Interaction) -> None:
-    await interaction.response.send_message(f"Hello {interaction.user.mention}!")
+async def ride_info(interaction: discord.Interaction, attraction_name: str, park_name: str = None, destination_name: str = None):) -> None:
+    await attraction.get(
+        interaction, attraction_name, park_name, destination_name
+    )
 
 
 
