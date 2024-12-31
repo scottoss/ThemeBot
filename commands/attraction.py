@@ -13,7 +13,7 @@ import helpers.themeparks as themeparks
 
 
 async def clear_tracked(interaction):
-    #await interaction.response.defer()
+    await interaction.response.defer()
 
     db.execute("DELETE FROM tracks WHERE user_id = ?", interaction.user.id)
 
@@ -386,7 +386,7 @@ async def untrack(interaction, attraction_name, park_name, destination_name):
 
 
 async def view_tracked(interaction):
-    #await interaction.response.defer()
+    await interaction.response.defer()
 
     tracks = db.get_user_tracks(interaction.user.id)
 
