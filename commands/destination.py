@@ -8,7 +8,7 @@ import helpers.themeparks as themeparks
 
 
 async def add(interaction, destination_name):
-    #await interaction.response.defer()
+    await interaction.response.defer()
 
     current_destination_ids = db.get_user_destination_ids(interaction.user.id)
 
@@ -111,7 +111,7 @@ async def clear_added(interaction):
 
 
 async def remove(interaction, destination_name):
-    #await interaction.response.defer()
+    await interaction.response.defer()
 
     current_destination_ids = db.get_user_destination_ids(interaction.user.id)
 
