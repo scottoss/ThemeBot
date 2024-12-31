@@ -109,7 +109,7 @@ async def track_a_ride(
     destination_name: str = None
 ) -> None:
     await attraction.track(
-        interaction,
+        interaction: discord.Interaction,
         attraction_name,
         wait_threshold,
         park_name,
@@ -123,7 +123,7 @@ async def track_a_ride(
 @app_commands.allowed_contexts(guilds=True, dms=True, private_channels=True) # all allowed
 async def untrack_a_ride(
     self,
-    interaction,
+    interaction: discord.Interaction,
     attraction_name: str,
     park_name: str = None,
     destination_name: str = None
