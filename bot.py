@@ -158,7 +158,7 @@ async def view_tracked_rides(interaction) -> None:
 @app_commands.allowed_installs(guilds=True, users=True) # users only, no guilds for install
 @app_commands.allowed_contexts(guilds=True, dms=True, private_channels=True) # all allowed
 async def add_destination(interaction, destination_name: str) -> None:
-    await attraction.view_tracked(interaction, destination_name)
+    await destination.add(interaction, destination_name)
 
 
 
