@@ -23,7 +23,7 @@ bot = commands.Bot(command_prefix="!", intents=intents,
                    case_insensitive=False,)
                    
                    
-tree = app_commands.CommandTree(bot)
+#tree = app_commands.CommandTree(bot)
 def main():
     bot.tree.add_command(Attraction())
     bot.tree.add_command(Destination())
@@ -61,7 +61,7 @@ async def sync(ctx):
 class Attraction(app_commands.Group):
     """Get/manage attractions."""
     
-    @tree.command()
+    #@tree.command()
     @app_commands.allowed_installs(guilds=True, users=True)
     @app_commands.allowed_contets(guilds=True, dms=True, private_channels=True)
     async def clear_tracked(self, interaction):
