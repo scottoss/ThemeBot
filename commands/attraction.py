@@ -63,7 +63,7 @@ async def get(interaction, attraction_name, park_name, destination_name):
             entities = await asyncio.gather(*tasks)
             await embed.add_addresses(error_embed, entities, session)
 
-            return await interaction.response.send_message(embed=error_embed)
+            return await interaction.followup.send(embed=error_embed)
 
         attraction_entity = await themeparks.get_entity(
             session, attractions[0]["id"]
@@ -185,7 +185,7 @@ async def get(interaction, attraction_name, park_name, destination_name):
 
         message_embed.set_image(url="attachment://image.png")
 
-        return await interaction.response.send_message(
+        return await interaction.followup.send(
             file=img_file, embed=message_embed
         )
 
@@ -196,7 +196,7 @@ async def get(interaction, attraction_name, park_name, destination_name):
 
     # TODO: Add operating hours if they exist
 
-    await interaction.response.send_message(embed=message_embed)
+    await interaction.followup.send(embed=message_embed)
 
 
 @decorators.require_destinations

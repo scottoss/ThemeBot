@@ -162,7 +162,7 @@ class Destination(app_commands.Group):
 )
 @app_commands.allowed_installs(guilds=True, users=True) # users only, no guilds for install
 @app_commands.allowed_contexts(guilds=True, dms=True, private_channels=True) # all allowed
-async def ride_info(interaction: discord.Interaction, attraction_name: str, park_name: str = None, destination_name: str = None) -> None:
+async def ride_info(interaction, attraction_name: str, park_name: str = None, destination_name: str = None) -> None:
     await attraction.get(
         interaction, attraction_name, park_name, destination_name
     )
