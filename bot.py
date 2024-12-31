@@ -61,7 +61,7 @@ async def sync(ctx):
 class Attraction(app_commands.Group):
     """Get/manage attractions."""
     
-    #@tree.command()
+    @bot.command()
     @app_commands.allowed_installs(guilds=True, users=True)
     @app_commands.allowed_contexts(guilds=True, dms=True, private_channels=True)
     async def clear_tracked(self, interaction):
