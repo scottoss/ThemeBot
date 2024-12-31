@@ -154,7 +154,7 @@ class Destination(app_commands.Group):
     #    await interaction.followup.send("All parks listed here: https://themeparks.wiki/browse")
 
 @app_commands.command(description="test")
-@app_commands.allowed_installs(guilds=False, users=True) # users only, no guilds for install
+@app_commands.allowed_installs(guilds=True, users=True) # users only, no guilds for install
 @app_commands.allowed_contexts(guilds=True, dms=True, private_channels=True) # all allowed
 async def hello(interaction: discord.Interaction) -> None:
     await interaction.response.send_message(f"Hello {interaction.user.mention}!")
