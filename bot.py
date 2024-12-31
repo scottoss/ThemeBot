@@ -63,7 +63,7 @@ class Attraction(app_commands.Group):
     
     #@tree.command()
     @app_commands.allowed_installs(guilds=True, users=True)
-    @app_commands.allowed_contets(guilds=True, dms=True, private_channels=True)
+    @app_commands.allowed_contexts(guilds=True, dms=True, private_channels=True)
     async def clear_tracked(self, interaction):
         await attraction.clear_tracked(interaction)
 
