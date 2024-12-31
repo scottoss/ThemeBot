@@ -185,9 +185,9 @@ async def get(interaction, attraction_name, park_name, destination_name):
 
         message_embed.set_image(url="attachment://image.png")
 
-        return await interaction.followup.send(
-            file=img_file, embed=message_embed
-        )
+        #return await interaction.followup.send(
+        #    file=img_file, embed=message_embed
+        #)
 
     # TODO: Add return times if it exists for that attraction
 

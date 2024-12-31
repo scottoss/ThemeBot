@@ -62,7 +62,27 @@ class Attraction(app_commands.Group):
     """Get/manage attractions."""
     
     
-    
+    @app_commands.command(description="Clear all tracked attractions.")
+    async def clear_tracked(self, interaction):
+        await attraction.clear_tracked(interaction)
+
+    @app_commands.command(description="Get information for an attraction.")
+    @app_commands.describe(
+        attraction_name=(
+            "The attraction to search for. Type all of part of the name."
+        ),
+        park_name=("The theme park to search. Type all or part of the name."),
+    )
+    async def get(
+        self,
+        interaction,
+        attraction_name: str,
+        park_name: str = None,
+        destination_name: str = None,
+    ):
+        await attraction.get(
+            interaction, attraction_name, park_name, destination_name
+        )
 
     @app_commands.command(description="Track an attraction.")
     async def track(
