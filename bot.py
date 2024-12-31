@@ -9,14 +9,13 @@ from discord.ext import commands
 import commands.attraction as attraction
 import commands.destination as destination
 #import commands.List as List
-import commands.weather as weather
+#import commands.weather as weather
 import helpers.track_attractions as track_attractions
 
 logging.getLogger().setLevel(logging.INFO)
 
 load_dotenv()
 DISCORD_TOKEN = os.getenv("DISCORD_TOKEN")
-GUILD = discord.Object(int(os.getenv("GUILD_ID")))
 
 intents = discord.Intents.all()
 
@@ -24,7 +23,7 @@ bot = commands.Bot(command_prefix="!", intents=intents,
                    case_insensitive=False,)
                    
                    
-
+tree = app_commands.CommandTree(bot)
 def main():
     bot.tree.add_command(Attraction())
     bot.tree.add_command(Destination())
@@ -61,10 +60,18 @@ async def sync(ctx):
 
 class Attraction(app_commands.Group):
     """Get/manage attractions."""
-
-    @app_commands.command(description="Clear all tracked attractions.")
+    
+    @tree.command()
+    @app_commands.allowed_installs(guilds=True, users=True)
+    @app_commands.allowed_contets(guilds=True, dms=True, private_channels=True)
     async def clear_tracked(self, interaction):
         await attraction.clear_tracked(interaction)
+
+
+
+    #@app_commands.command(description="Clear all tracked attractions.")
+    #async def clear_tracked(self, interaction):
+    #    await attraction.clear_tracked(interaction)
 
     @app_commands.command(description="Get information for an attraction.")
     @app_commands.describe(
