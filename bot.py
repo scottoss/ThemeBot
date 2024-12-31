@@ -63,17 +63,8 @@ class Attraction(app_commands.Group):
     
     
     @app_commands.command(description="Clear all tracked attractions.")
-    @app_commands.user_install()
-    #@app_commands.allowed_installs(guilds=True, users=True)
-    #@app_commands.allowed_contexts(guilds=True, dms=True, private_channels=True)
-    async def clear_tracked(self, interaction: discord.Interaction):
+    async def clear_tracked(self, interaction):
         await attraction.clear_tracked(interaction)
-
-
-
-    #@app_commands.command(description="Clear all tracked attractions.")
-    #async def clear_tracked(self, interaction):
-    #    await attraction.clear_tracked(interaction)
 
     @app_commands.command(description="Get information for an attraction.")
     @app_commands.describe(
@@ -161,6 +152,15 @@ class Destination(app_commands.Group):
     #@app_commands.command(description="List all available parks.")
     #sync def list_parks(interaction):
     #    await interaction.followup.send("All parks listed here: https://themeparks.wiki/browse")
+
+@app_commands.command(description="test")
+@app_commands.user_install()
+#@app_commands.allowed_installs(guilds=True, users=True)
+#@app_commands.allowed_contexts(guilds=True, dms=True, private_channels=True)
+async def test(self, interaction: discord.Interaction):
+    await attraction.view_tracked(interaction)
+
+
 
 
 #class Weather(app_commands.Group):
