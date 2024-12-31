@@ -155,8 +155,8 @@ class Destination(app_commands.Group):
 
 @app_commands.command(description="test")
 @app_commands.user_install()
-#@app_commands.allowed_installs(guilds=True, users=True)
-#@app_commands.allowed_contexts(guilds=True, dms=True, private_channels=True)
+@app_commands.allowed_installs(guilds=False, users=True)
+@app_commands.allowed_contexts(guilds=True, dms=True, private_channels=True)
 async def test(interaction: discord.Interaction):
     await attraction.view_tracked(interaction)
 
