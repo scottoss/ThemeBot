@@ -154,7 +154,7 @@ async def ride_info(interaction, attraction_name: str, park_name: str = None, de
 @app_commands.command(description="Clear all tracked attractions.")
 @app_commands.allowed_installs(guilds=True, users=True) # users only, no guilds for install
 @app_commands.allowed_contexts(guilds=True, dms=True, private_channels=True) # all allowed
-async def clear_all_tracked_rides(interaction, attraction_name: str, park_name: str = None, destination_name: str = None) -> None:
+async def clear_all_tracked_rides(interaction) -> None:
     await attraction.clear_tracked(interaction)
 
 
