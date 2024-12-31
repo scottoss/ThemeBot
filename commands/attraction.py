@@ -24,7 +24,7 @@ async def clear_tracked(interaction):
 
 
 @decorators.require_destinations
-async def get(interaction, attraction_name, park_name, destination_name):
+async def get(interaction: discord.Interaction, attraction_name, park_name, destination_name):
     await interaction.response.defer()
 
     destination_ids = db.get_user_destination_ids(interaction.user.id)
