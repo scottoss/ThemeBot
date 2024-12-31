@@ -100,10 +100,15 @@ async def track(client):
                         row["user_id"],
                         row["attraction_id"],
                     )
-
-                    await channel.send(
+                    
+                    Id = row["user_id"]
+                    
+                    user = client.get_user(Id)
+                    await user.send(
                         content=f"<@{row['user_id']}>", embed=status_embed
                     )
+
+                    #await channel.
             elif wait <= threshold:
                 status_embed = embed.create_embed(
                     "Reached threshold!",
@@ -126,10 +131,18 @@ async def track(client):
                     row["user_id"],
                     row["attraction_id"],
                 )
-
-                await channel.send(
+                
+                Id = row["user_id"]
+                    
+                user = client.get_user(Id)
+                await user.send(
                     content=f"<@{row['user_id']}>", embed=status_embed
                 )
+
+
+                #await channel.send(
+                #    content=f"<@{row['user_id']}>", embed=status_embed
+                #)
         else:
             if row["reached_threshold"]:
                 status_message = (
@@ -151,7 +164,14 @@ async def track(client):
                     row["user_id"],
                     row["attraction_id"],
                 )
-
-                await channel.send(
+                
+                Id = row["user_id"]
+                    
+                user = client.get_user(Id)
+                await user.send(
                     content=f"<@{row['user_id']}>", embed=status_embed
                 )
+
+                #await channel.send(
+                #    content=f"<@{row['user_id']}>", embed=status_embed
+                #)
