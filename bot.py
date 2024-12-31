@@ -106,7 +106,7 @@ async def track_a_ride(
     attraction_name: str,
     wait_threshold: app_commands.Range[int, 0],
     park_name: str = None,
-    destination_name: str = None,
+    destination_name: str = None
 ) -> None:
     await attraction.track(
         interaction,
@@ -126,7 +126,7 @@ async def untrack_a_ride(
     interaction,
     attraction_name: str,
     park_name: str = None,
-    destination_name: str = None,
+    destination_name: str = None
 ) -> None:
     await attraction.untrack(
         interaction,
