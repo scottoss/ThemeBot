@@ -2,18 +2,17 @@ import asyncio
 import os
 
 import aiohttp
-from dotenv import load_dotenv
+
 
 import helpers.database as db
 import helpers.embed as embed
 import helpers.themeparks as themeparks
 
-load_dotenv()
-STATUS_CHANNEL_ID = int(os.getenv("STATUS_CHANNEL_ID"))
+
 
 
 async def track(client):
-    channel = client.get_channel(STATUS_CHANNEL_ID)
+    #channel = client.get_channel(STATUS_CHANNEL_ID)
 
     tracks = db.execute("SELECT * FROM tracks")
 

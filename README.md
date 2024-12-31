@@ -12,10 +12,10 @@ A Discord bot to assist with all things theme parks.
 4. Create a file in the root directory of the cloned repository named `.env` with the following:
     ```
     DISCORD_TOKEN=<YOUR_TOKEN>
-    STATUS_CHANNEL_ID=<YOUR_CHANNEL_ID>
+    
     
     ```
-    where `<YOUR_TOKEN>` is your bot's token, `<YOUR_CHANNEL_ID>` is the ID of the channel you want status updates in.
+    where `<YOUR_TOKEN>` is your bot's token,
 5. Execute `pip install -r requirements.txt` in your terminal.
 6. Open your terminal and navigate to the newly cloned repository.
 7. Execute `python bot.py` in your terminal.
