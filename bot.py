@@ -27,7 +27,7 @@ bot = commands.Bot(command_prefix="!", intents=intents,
 def main():
     bot.tree.add_command(Attraction())
     bot.tree.add_command(Destination())
-    bot.tree.add_command(hello)
+    bot.tree.add_command(ride_info)
 
     bot.run(DISCORD_TOKEN)
 
