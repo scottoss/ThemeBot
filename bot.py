@@ -25,12 +25,20 @@ bot = commands.Bot(command_prefix="!", intents=intents,
                    
 #tree = app_commands.CommandTree(bot)
 def main():
-    #bot.tree.add_command(Attraction())
-    #bot.tree.add_command(Destination())
+    #attractions
     bot.tree.add_command(ride_info)
     bot.tree.add_command(clear_all_tracked_rides)
+    bot.tree.add_command(track_a_ride)
+    bot.tree.add_command(untrack_a_ride)
+    bot.tree.add_command(view_tracked_rides)
+    #destinations
+    bot.tree.add_command(add_destination)
+    bot.tree.add_command(remove_destination)
+    bot.tree.add_command(clear_all_your_destinations)
+    bot.tree.add_command(view_all_your_destinations)
     
-
+    
+    
     bot.run(DISCORD_TOKEN)
 
 
@@ -60,77 +68,9 @@ async def sync(ctx):
 #    await List.List_Parks(interaction, tree)
 
 
-class Attraction(app_commands.Group):
-    """Get/manage attractions."""
-    
-    
-    
-    
-
-    @app_commands.command(description="Track an attraction.")
-    async def track(
-        self,
-        interaction,
-        attraction_name: str,
-        wait_threshold: app_commands.Range[int, 0],
-        park_name: str = None,
-        destination_name: str = None,
-    ):
-        await attraction.track(
-            interaction,
-            attraction_name,
-            wait_threshold,
-            park_name,
-            destination_name,
-        )
-
-    @app_commands.command(description="Untrack an attraction.")
-    async def untrack(
-        self,
-        interaction,
-        attraction_name: str,
-        park_name: str = None,
-        destination_name: str = None,
-    ):
-        await attraction.untrack(
-            interaction, attraction_name, park_name, destination_name
-        )
-
-    @app_commands.command(description="View tracked attrations.")
-    async def view_tracked(self, interaction):
-        await attraction.view_tracked(interaction)
 
 
-class Destination(app_commands.Group):
-    """Get/manage destinations."""
 
-    @app_commands.command(description="Add a destination to the search list.")
-    @app_commands.describe(
-        destination_name=(
-            "The destination to add. Type all of part of the name."
-        )
-    )
-    async def add(self, interaction, destination_name: str):
-        await destination.add(interaction, destination_name)
-
-    @app_commands.command(description="Clear your destination list.")
-    async def clear_added(self, interaction):
-        await destination.clear_added(interaction)
-
-    @app_commands.command(
-        description="Remove a destination from the search list."
-    )
-    @app_commands.describe(
-        destination_name=(
-            "The destination to remove. Type all of part of the name."
-        )
-    )
-    async def remove(self, interaction, destination_name: str):
-        await destination.remove(interaction, destination_name)
-
-    @app_commands.command(description="View added destinations.")
-    async def view_added(self, interaction):
-        await destination.view_added(interaction)
         
     #@app_commands.command(description="List all available parks.")
     #sync def list_parks(interaction):
@@ -156,6 +96,103 @@ async def ride_info(interaction, attraction_name: str, park_name: str = None, de
 @app_commands.allowed_contexts(guilds=True, dms=True, private_channels=True) # all allowed
 async def clear_all_tracked_rides(interaction) -> None:
     await attraction.clear_tracked(interaction)
+
+@app_commands.command(description="Track an attraction.")
+@app_commands.allowed_installs(guilds=True, users=True) # users only, no guilds for install
+@app_commands.allowed_contexts(guilds=True, dms=True, private_channels=True) # all allowed
+async def track_a_ride(
+    self,
+    interaction,
+    attraction_name: str,
+    wait_threshold: app_commands.Range[int, 0],
+    park_name: str = None,
+    destination_name: str = None,
+) -> None:
+    await attraction.track(
+        interaction,
+        attraction_name,
+        wait_threshold,
+        park_name,
+        destination_name,
+    )
+
+
+
+@app_commands.command(description="Untrack an attraction.")
+@app_commands.allowed_installs(guilds=True, users=True) # users only, no guilds for install
+@app_commands.allowed_contexts(guilds=True, dms=True, private_channels=True) # all allowed
+async def untrack_a_ride(
+    self,
+    interaction,
+    attraction_name: str,
+    park_name: str = None,
+    destination_name: str = None,
+) -> None:
+    await attraction.untrack(
+        interaction,
+        attraction_name,
+        park_name,
+        destination_name,
+    )
+    
+    
+    
+@app_commands.command(description="View all your tracked attractions.")
+@app_commands.allowed_installs(guilds=True, users=True) # users only, no guilds for install
+@app_commands.allowed_contexts(guilds=True, dms=True, private_channels=True) # all allowed
+async def view_tracked_rides(interaction) -> None:
+    await attraction.view_tracked(interaction)
+    
+    
+    
+    
+    
+    
+    
+    
+    
+@app_commands.command(description="Add a destination to the search list.")
+@app_commands.describe(
+    destination_name=(
+        "The destination to add. Type all of part of the name."
+    )
+)
+@app_commands.allowed_installs(guilds=True, users=True) # users only, no guilds for install
+@app_commands.allowed_contexts(guilds=True, dms=True, private_channels=True) # all allowed
+async def add_destination(interaction) -> None:
+    await attraction.view_tracked(interaction, destination_name)
+
+
+
+
+@app_commands.command(description="Clear your destination list.")
+@app_commands.allowed_installs(guilds=True, users=True) # users only, no guilds for install
+@app_commands.allowed_contexts(guilds=True, dms=True, private_channels=True) # all allowed
+async def clear_all_your_destinations(interaction) -> None:
+    await destination.clear_added(interaction)
+
+
+
+@app_commands.command(
+    description="Remove a destination from the search list."
+)
+@app_commands.allowed_installs(guilds=True, users=True) # users only, no guilds for install
+@app_commands.allowed_contexts(guilds=True, dms=True, private_channels=True) # all allowed
+@app_commands.describe(
+    destination_name=(
+        "The destination to remove. Type all of part of the name."
+    )
+)
+async def remove_destination(self, interaction, destination_name: str):
+    await destination.remove(interaction, destination_name)
+
+
+
+@app_commands.command(description="View added destinations.")
+@app_commands.allowed_installs(guilds=True, users=True) # users only, no guilds for install
+@app_commands.allowed_contexts(guilds=True, dms=True, private_channels=True) # all allowed
+async def view_all_your_destinations(interaction) -> None:
+    await destination.view_added(interaction)
 
 
 
