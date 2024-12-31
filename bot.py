@@ -181,7 +181,7 @@ async def clear_all_your_destinations(interaction) -> None:
         "The destination to remove. Type all of part of the name."
     )
 )
-async def remove_destination(self, interaction, destination_name: str):
+async def remove_destination(interaction, destination_name: str):
     await destination.remove(interaction, destination_name)
 
 
