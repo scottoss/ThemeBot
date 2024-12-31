@@ -61,10 +61,10 @@ async def sync(ctx):
 class Attraction(app_commands.Group):
     """Get/manage attractions."""
     
-    @app_commands.command(description="Clear all tracked attractions.")
     @app_commands.user_install()
-    #@app_commands.allowed_installs(guilds=True, users=True)
-    #@app_commands.allowed_contexts(guilds=True, dms=True, private_channels=True)
+    @app_commands.command(description="Clear all tracked attractions.")
+    @app_commands.allowed_installs(guilds=True, users=True)
+    @app_commands.allowed_contexts(guilds=True, dms=True, private_channels=True)
     async def clear_tracked(self, interaction):
         await attraction.clear_tracked(interaction)
 
