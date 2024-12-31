@@ -113,7 +113,7 @@ async def track_a_ride(
         attraction_name,
         wait_threshold,
         park_name,
-        destination_name,
+        destination_name
     )
 
 
@@ -132,7 +132,7 @@ async def untrack_a_ride(
         interaction,
         attraction_name,
         park_name,
-        destination_name,
+        destination_name
     )
     
     
