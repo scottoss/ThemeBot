@@ -101,7 +101,6 @@ async def clear_all_tracked_rides(interaction) -> None:
 @app_commands.allowed_installs(guilds=True, users=True) # users only, no guilds for install
 @app_commands.allowed_contexts(guilds=True, dms=True, private_channels=True) # all allowed
 async def track_a_ride(
-    self,
     interaction,
     attraction_name: str,
     wait_threshold: app_commands.Range[int, 0],
@@ -109,11 +108,11 @@ async def track_a_ride(
     destination_name: str = None
 ) -> None:
     await attraction.track(
-        interaction: discord.Interaction,
+        interaction,
         attraction_name,
         wait_threshold,
         park_name,
-        destination_name
+        destination_name,
     )
 
 
@@ -122,17 +121,16 @@ async def track_a_ride(
 @app_commands.allowed_installs(guilds=True, users=True) # users only, no guilds for install
 @app_commands.allowed_contexts(guilds=True, dms=True, private_channels=True) # all allowed
 async def untrack_a_ride(
-    self,
-    interaction: discord.Interaction,
+    interaction,
     attraction_name: str,
     park_name: str = None,
-    destination_name: str = None
+    destination_name: str = None,
 ) -> None:
     await attraction.untrack(
         interaction,
         attraction_name,
         park_name,
-        destination_name
+        destination_name,
     )
     
     
